@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>NightBlade :: Mappers Guide to Sketch Maps</title>
+		<meta name="description" content="The official site for Nightblade, stealth-based medieval combat mod for UT3." />
+		<meta name="keywords" content="ut3, mods, ut3 mods, thievery, blackcatgames, nightblade, night-blade, phat lewt, medieval, thief, melee weapons, sword fights" />
+		
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="styles/nightblade/index.rdf" />
+		<link rel="EditURI" type="application/rsd+xml" title="RSD" href="styles/nightblade/rsd.xml" />
+		<style type="text/css">@import "styles/nightblade/nb.css";</style>
+		<!--[if IE]><style type="text/css">@import "styles/nightblade/ie.css";</style><![endif]-->
+	<script type="text/javascript">
+		<!--
+		var winNew;
+                  function openNew() {
+                  winNew = window.open('http://night-blade.com/credits.html', 'newWindow', 'height=300,width=300')
+		}
+		// -->
+	</script>
+  </head>
+
+  <body>
+			<div class="topmenu"></div>
+		<h1><span class="wasp">Mappers Guide to Sketch Maps</span></h1>
+
+	<div class="content">
+		
+		<div class="topicbanner" id="a000017">
+			<h2>Getting a Sketch Map Ingame</h2>
+				<span class="date">Immortius :: May 20, 2008</span>
+		</div>
+
+		<div class="post">
+			<p>A sketch map in Nightblade is a top down map which displays the location of players and other useful information. Nightblade has support for multiple pages of sketch maps, and multiple maps per map page. For instance: if your map has a four storey tower you can have a sketch of each storey of the tower on the one texture, and players will be displayed in the section of the tower they are in.</p>
+			<p>1. Generally, to start the sketch map you will want to take a screenshot of the map from the top-down perspective, to use as a guide when creating the sketch map. You may rotate the sketch map image relative to the level if you wish, but keep track of how much you rotate it and in which direction.</p>
+			<a href="images/NbMG/mappersguide21.gif"><img src="images/NbMG/mappersguide21Thumb.gif" alt="Top Down viewport"></a>
+			<a href="images/NbMG/mappersguide22.gif"><img src="images/NbMG/mappersguide22Thumb.gif" alt="Sketch Map Example"></a>
+			<p>2. Now that you've finished your masterpiece you need to import it into the game. Firstly, the final image needs to have sides that are a power of 2 (i.e. 512, or 1024). You may need to extend the image size to get this to work - this is fine, just make sure you leave the actual map in the top-right corner.</p>
+			<a href="images/NbMG/mappersguide23.gif"><img src="images/NbMG/mappersguide23Thumb.gif" alt="Correctly Sized Sketch Map"></a>
+			<p>Open up the UT3 Editor, then open the Generic browser and select "Import..." from the file menu. Specify your map's file name as the Package so that the sketch map will be stored within the map. Also set the LODGroup of the texture to TEXTUREGROUP_UI (if you forget to do this now you can edit the texture's properties later).</p>
+			<a href="images/NbMG/mappersguide24.gif"><img src="images/NbMG/mappersguide24Thumb.gif" alt="Import Options"></a>
+			<p>3. The settings for sketch maps are contained in the NbMapInfo section the World Properties. Within the NbMapInfo section is a property called IngameMapSettings. Add a new element to this for your sketchmap. Set the MapTexture property to your map's texture, and the TextureSize property to the size of your map within the texture (if you had to extend the texture size to reach dimensions that were a power of two, this is how you get rid of the excess). The Team property determines which team can see the map - 0 for Thieves, 1 for Guards and 255 for both.</p>
+			<a href="images/NbMG/mappersguide25.gif"><img src="images/NbMG/mappersguide25Thumb.gif" alt="Ingame Map Settings"></a>
+			<p>Your sketch map will now display ingame when the map key is pressed.</p>
+				<p>-:-</p>
+		</div>
+
+
+
+		<div class="topicbanner" id="a000017">
+			<h2>Setting up a Sketch Map to Display Players</h2>
+				<span class="date">Immortius :: May 20, 2008</span>
+		</div>
+
+		<div class="post">
+			<p>In the properties for the sketch map is a MapArea list. Each map area describes settings for a single map section on the sketch map - in this case I only have one, so I will add a single MapArea element. In the four storey tower example above I would define a MapArea for each storey.</p>
+			<p>The first property, MapVolume, allows you to specify a NbMapVolume that players have to be within to show on the map. This is useful for cases where you have different maps for different storeys and don't want players to appear who are on different storeys. MapVolume is optional however, and is not necessary if your map covers the entire level.</p>
+			<p>For the next four properties you need to select two prominent map features that are shared between your map area and the level. These features should be as far apart as possible and towards the top-left and bottom-right of the area in the level. Specify the pixel location of these points on the sketch map texture in the PixelLocationTopLeft and PixelLocationBottomRight properties, and the level coordinates in the WorldLocationTopLeft and WorldLocationBottomRight properties. Working out the pixel locations will depend on your image software, but the world locations can be discovered by hovering your mouse over the point in the Top-down viewport and reading the Mouse: (X, Y, Z) coordinates from the UT3 editor status bar down the bottom of the editor (ignoring the Z value).</p>
+			<p>The final two properties allow you to deal with the relative rotation of the sketch map compared to the world. If you map is not rotated or is rotated 180º, you don't need to change anything. If your map has been rotated 90º either direction simply check the SwapXYAxis option. If your map has been rotated at some other angle fill in the MapAngle, with a positive number if rotated anti-clockwise and a negative number if rotated clockwise.</p>
+			<a href="images/NbMG/mappersguide26.gif"><img src="images/NbMG/mappersguide26Thumb.gif" alt="Map Area Settings"></a>
+			<p>The sketch map will now display the location of players.</p>
+			<a href="images/NbMG/mappersguide27.gif"><img src="images/NbMG/mappersguide27Thumb.gif" alt="Sketch Map Ingame"></a>
+				<p>-:-</p>
+		</div>
+
+		<div class="legal">
+			<p>Copyright 2008 &copy; <a href="http://www.blackcatgames.com" title="Visit the Black Cat Games website">BlackCatGames.com</a></p>
+		</div>
+	</div>
+
+	<div class="menubuttons">
+		<div id="nav">
+			<a id="navnews" href="news.html" title="Latest news."><span class="wasp">News</span></a>
+			<a id="navabout" href="about.html" title="About the project."><span class="wasp">About</span></a>
+			<a id="navfiles" href="testing.html" title="Help test Nightblade."><span class="wasp">Files</span></a>
+			<a id="navforums" href="https://forums.blackcatgames.com/" title="Get in touch with the community."><span class="wasp">Forums</span></a>
+			<a id="navcontact" href="https://forums.blackcatgames.com/contact-us" title="Make contact with the crew."><span class="wasp">Contact</span></a>
+			<a id="markmapping" href="mapping.html" title="Learn to make maps in NightBlade."><span class="wasp">Mapping</span></a>
+		</div>
+		<div id="navwide">
+		  <a id="navjobs" href="help.html" title="Want to contribute to Nightblade?"><span class="wasp">Help Wanted</span></a>
+		</div>
+	</div>
+
+		<p><!-- Start image preloading -->
+			<img class="preload" src="styles/nightblade/buttons/news_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/about_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/files_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/forums_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/jobs_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/contact_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/mapping_hover.jpg" alt="" />
+		<!-- Stop image preloading --></p>
+
+ </body>
+</html>

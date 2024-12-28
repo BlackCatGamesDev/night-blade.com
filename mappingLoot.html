@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+    <title>NightBlade :: Mappers Guide to Loot</title>
+		<meta name="description" content="The official site for Nightblade, stealth-based medieval combat mod for UT3." />
+		<meta name="keywords" content="ut3, mods, ut3 mods, thievery, blackcatgames, nightblade, night-blade, phat lewt, medieval, thief, melee weapons, sword fights" />
+		
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="styles/nightblade/index.rdf" />
+		<link rel="EditURI" type="application/rsd+xml" title="RSD" href="styles/nightblade/rsd.xml" />
+		<style type="text/css">@import "styles/nightblade/nb.css";</style>
+		<!--[if IE]><style type="text/css">@import "styles/nightblade/ie.css";</style><![endif]-->
+	<script type="text/javascript">
+		<!--
+		var winNew;
+                  function openNew() {
+                  winNew = window.open('http://night-blade.com/credits.html', 'newWindow', 'height=300,width=300')
+		}
+		// -->
+	</script>
+  </head>
+
+  <body>
+			<div class="topmenu"></div>
+		<h1><span class="wasp">Mappers Guide to Loot</span></h1>
+
+	<div class="content">
+		
+		<div class="topicbanner" id="a000017">
+			<h2>Loot Distribution Theory</h2>
+				<span class="date">Immortius :: May 11, 2008</span>
+		</div>
+
+		<div class="post">
+			<p>Loot is a fundamental part of Nightblade. The placement and distribution of loot can drastically affect the balance of a map.</p>
+			<p>The goal is to place loot so that the guard team needs to stretch itself to guard the loot, while at the same time ensuring thieves need to steal a sufficient amount from guarded areas, and not simply steal from unguarded areas.</p>
+			<p>One way of placing loot is to have a number of clumps of loot, each of which can be guarded by a guard while being spread out enough that a guard cannot simply stand still to protect the entire clump. The loot goal for thieves can then be set so that thieves have to steal a reasonable amount from these clumps. There should be enough clumps so that guards have to spread out to guard them successfully. In addition there may be a smattering of loot to fill out the rest of the map.</p>
+				<p>-:-</p>
+		</div>
+
+
+
+		<div class="topicbanner" id="a000017">
+			<h2>Loot Archetypes</h2>
+				<span class="date">Immortius :: May 11, 2008</span>
+		</div>
+
+		<div class="post">
+			<p>To aid in the placement of loot, it is recommended that archetypes are used. Archetypes are basically preconfigured actor templates. Actors created from archetypes have the archetype's settings as their default values, which can then be overridden for that instance. If an archetype is later updated then all instances of the archetype will have their non-overridden settings updated.</p>
+			<p>For Loot the main benefit of using archetypes is that it ensures the value of the a given loot item is consistent both within and across maps. This can aid players in waking intelligent decisions about what to steal and what to guard. A number of loot item archetypes are provided in the NbLoot package.</p>
+			<a href="images/NbMG/mappersguide14.gif"><img src="images/NbMG/mappersguide14Thumb.gif" alt="Loot Archetypes"></a>
+			<p>To place a loot item from an archetype:</p>
+			<p>1. Select the archetype you wish to place in the generic browser.</p>
+			<p>2. Rigth-click in a viewport and select <b>Add Actor -> Add Archetype</b>.</p>
+			<a href="images/NbMG/mappersguide15.gif"><img src="images/NbMG/mappersguide15Thumb.gif" alt="Placing Archetypes"></a>
+			<p>To create a new loot archetype:</p>
+			<p>1. Select the static mesh you wish to make into a loot item in the generic browser.</p>
+			<p>2. Right-click in a viewport and select <b>Add Actor -> Add NbLoot</b>.</p>
+			<p>3. Select the loot item and open its properties. The NbLoot section contains the loot specific settings. These are:</p>
+			<p><b>bRandomSpawn</b> - If set to false then the item will be ignored by the loot randomisation system. You should leave this true for archetypes and set it false on any specific instances you want to always exist.
+ 			<br><b>LootCategory</b> - This determines how much the loot is worth. The settings are:
+			<ul>
+			<li>LVT_Trivial (5)</li>
+			<li>LVT_Minor (20)</li>
+			<li>LVT_Major (50)</li>
+			<li>LVT_Superior (100)</li>
+			<li>LVT_Godly (250)</li>
+			<li>LVT_Custom</li>
+			</ul>
+			<b>LootValue</b> - If the loot category is set to LVT_Custom, then this is the value that is used.
+			<br><b>PickupSound</b> - What sound the player picking up the item will hear.
+			<p>Set the loot category of the loot.</p>
+			<a href="images/NbMG/mappersguide16.gif"><img src="images/NbMG/mappersguide16Thumb.gif" alt="Loot Properties"></a>			
+			<p>4. Right-click the loot item and select Create Archetype. Select which package and group to save the archetype in, and set a name for the archetype. If you want to store the archetype in the map then set the package name to the map's file name.</p>
+				<p>-:-</p>
+		</div>
+
+		<div class="topicbanner" id="a000017">
+			<h2>Controlling Loot Distribution and Randomisation</h2>
+				<span class="date">Immortius :: May 11, 2008</span>
+		</div>
+
+		<div class="post">
+			<p>It is possible to set up a Nightblade map so that loot is randomised each game. There are a few different systems that can be used either individually or together to do this:</p>
+
+			<b>Map-wide Loot Randomisation</b>
+
+			<p>In the World Info properties of your map, in the NbMapInfo object is a setting called LootToSpawn. If this setting is given a value other than 0, then each game loot will be randomly destroyed until the amount of loot remaining is under this amount. So to have basic, map wide loot randomisation set this value to a value under the amount of loot in your map.</p>
+			<a href="images/NbMG/mappersguide17.gif"><img src="images/NbMG/mappersguide17Thumb.gif" alt="Map-wide Loot Limit"></a>
+			
+			<p><b>Volume Based Loot Randomisation</b></p>			
+
+			<p>It is also possible to set the LootLimit of an area within a map, which will override the Map-wide Loot Randomisation (loot in the area will still count againt total map loot for the purposes of the deleting loot to get it under the map-wide loot limit, but will not be removed to achieve this).</p>
+			<p>1. Edit the builder brush to form the shape, size and position of the area you wish to set a specific loot limit on.</p>
+			<p>2. Right-click on the Add Volume button and select NbLootVolume.</p>
+			<a href="images/NbMG/mappersguide18.gif"><img src="images/NbMG/mappersguide18Thumb.gif" alt="Map-wide Loot Limit"></a>
+			<p>3. In the volume's properties under the NbLootVolume section, set the loot limit.</p>
+
+			<p><b>Loot Sets</b></p>
+
+			<p>A final option is to set up a loot set - a group of loot items, of which a certain number will exist each game. This can be used to have an unusually valuable item which can be in multiple positions, but should exist in one and only one of those positions each game. Or a set where 3 out of 5 items should exist each game, and so on. This takes priority over the other two randomisation techniques.</p>
+			<p>1. Open the Kismet Editor.</p>
+			<p>2. Right click in the editor, and choose Create New Sequence. Give the sequence a sensible name and then double click it. This gives your loot set a different space to the rest of the sequences.</p>
+			<p>3. Right click in the editor, and choose <b>New Event -> NbLoot -> Loot Set Controller</b>.</p>
+			<a href="images/NbMG/mappersguide19.gif"><img src="images/NbMG/mappersguide19Thumb.gif" alt="Creating a Loot Set Controller"></a>
+			<p>4. Add the loot items you want to be part of the loot set into the sequence as object variables, and connect them to the Instigator node on the Loot Set Controller.</p>
+			<p>5. Set the numToSpawn option in the Loot Set Controller option.</p>
+			<a href="images/NbMG/mappersguide20.gif"><img src="images/NbMG/mappersguide20Thumb.gif" alt="Loot Set Example"></a>
+				<p>-:-</p>
+		</div>
+
+		<div class="topicbanner" id="a000017">
+			<h2>Getting Information on Loot in a Map</h2>
+				<span class="date">Immortius :: May 11, 2008</span>
+		</div>
+
+		<div class="post">
+			<p>The console command <b>AnalyseLoot</b> will produce a break down on the various Loot Sets and Loot Volumes in a map, how much loot is in each one and what limits have been set on loot to spawn. It also reports how much loot exists outside of all loot sets and volumes, the overall loot limit for the map and the total amount of loot in the map.</p>
+				<p>-:-</p>
+		</div>
+	
+		<div class="legal">
+			<p>Copyright 2008 &copy; <a href="http://www.blackcatgames.com" title="Visit the Black Cat Games website">BlackCatGames.com</a></p>
+		</div>
+	</div>
+
+
+	<div class="menubuttons">
+		<div id="nav">
+			<a id="navnews" href="news.html" title="Latest news."><span class="wasp">News</span></a>
+			<a id="navabout" href="about.html" title="About the project."><span class="wasp">About</span></a>
+			<a id="navfiles" href="testing.html" title="Help test Nightblade."><span class="wasp">Files</span></a>
+			<a id="navforums" href="https://forums.blackcatgames.com/" title="Get in touch with the community."><span class="wasp">Forums</span></a>
+			<a id="navcontact" href="https://forums.blackcatgames.com/contact-us" title="Make contact with the crew."><span class="wasp">Contact</span></a>
+			<a id="markmapping" href="mapping.html" title="Learn to make maps in NightBlade."><span class="wasp">Mapping</span></a>
+		</div>
+		<div id="navwide">
+		  <a id="navjobs" href="help.html" title="Want to contribute to Nightblade?"><span class="wasp">Help Wanted</span></a>
+		</div>
+	</div>
+
+		<p><!-- Start image preloading -->
+			<img class="preload" src="styles/nightblade/buttons/news_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/about_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/files_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/forums_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/jobs_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/contact_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/mapping_hover.jpg" alt="" />
+		<!-- Stop image preloading --></p>
+
+ </body>
+</html>

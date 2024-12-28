@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+    <title>NightBlade :: Introduction to Nightblade Mapping</title>
+		<meta name="description" content="The official site for Nightblade, stealth-based medieval combat mod for UT3." />
+		<meta name="keywords" content="ut3, mods, ut3 mods, thievery, blackcatgames, nightblade, night-blade, phat lewt, medieval, thief, melee weapons, sword fights" />
+		
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="styles/nightblade/index.rdf" />
+		<link rel="EditURI" type="application/rsd+xml" title="RSD" href="styles/nightblade/rsd.xml" />
+		<style type="text/css">@import "styles/nightblade/nb.css";</style>
+		<!--[if IE]><style type="text/css">@import "styles/nightblade/ie.css";</style><![endif]-->
+	<script type="text/javascript">
+		<!--
+		var winNew;
+                  function openNew() {
+                  winNew = window.open('http://night-blade.com/credits.html', 'newWindow', 'height=300,width=300')
+		}
+		// -->
+	</script>
+  </head>
+
+  <body>
+			<div class="topmenu"></div>
+		<h1><span class="wasp">Introduction to Nightblade Mapping</span></h1>
+
+	<div class="content">
+		
+		<div class="topicbanner" id="a000017">
+			<h2>Setting up UT3 Editor for Nightblade</h2>
+				<span class="date">Immortius :: May 07, 2008</span>
+		</div>
+
+		<div class="post">
+			<p>In order to create a map for Nightblade, you will need to first set up UT3 Editor to automatically load the Nightblade files.</p>
+			<p>1. Copy everything under <b>.\My Games\Unreal Tournament 3\UTGame\Published\cookedPC\Nightblade</b> to <b>\My Games\Unreal Tournament 3\UTGame\UnPublished\cookedPC\</b></p>
+			<a href="images/NbMG/mappersguide1.gif"><img src="images/NbMG/mappersguide1Thumb.gif" alt="Nightblade Directory Structure"></a>
+			<p>2. In your <b>.\UTGame\Config\UTEditor.ini</b> add or modify the [ModPackages] section to be as follows:</p>
+			<p>[ModPackages]<br>
+			   ModPackagesInPath=..\UTGame\Src<br>
+			   ModOutputDir=..\UTGame\Unpublished\CookedPC\Script<br>
+			   ModPackages=NbLowLevel<br>
+			   ModPackages=NightbladeMod<br>
+			   ModPackages=NbAI
+			</p>
+				<p>-:-</p>
+		</div>
+
+		<div class="topicbanner" id="a000017">
+			<h2>Nightblade Resources</h2>
+				<span class="date">Immortius :: May 07, 2008</span>
+		</div>
+
+		<div class="post">
+			<p>The first thing to note is that our packages are either prefixed with "Th" or "Nb". The "Th" packages contain content ported from Thievery, so they are relatively low quality. We are slowly replacing these over time. I wouldn't recommend using them. The "Nb" packages generally contain more recent content, either from our efforts to make Nightblade for UT2004, or updated and new content for UT3.</p>
+			<p>The CustomEnvironments directory contains all the static meshes and textures for use by maps. The CustomSounds directory contains all the Nightblade sounds, including ambient sounds and music that may be used in maps.</p>
+				<p>-:-</p>
+		</div>
+
+		<div class="topicbanner" id="a000017">
+			<h2>Setting Up a Map For Play</h2>
+				<span class="date">Immortius :: May 07, 2008</span>
+		</div>
+
+		<div class="post">
+			<p>Once you have created a map, there are a couple of steps to making it playable ingame.</p>
+			<p>1. Add some player starts. Thieves use standard UT3 PlayerStarts at the moment, so place a few of these. Guards possess AI guards, so place some NbKnights in the map for them.</p>
+			<a href="images/NbMG/mappersguide2.gif"><img src="images/NbMG/mappersguide2Thumb.gif" alt="Location of NbKnight class"></a>
+			<p>2. Open the World properties (reached through View->World Properties). In the WorldInfo tab you can set the map's Title and Author. Also in that tab is a GameTypesSupportedOnThisMap list, add an entry and select NbGameInfo. Finally you can set the MyMapInfo property to be a NbMapInfo, which can be used to configure various Nightblade-specific map settings, such as thief lives and the map time limit.</p>
+			<a href="images/NbMG/mappersguide3.gif"><img src="images/NbMG/mappersguide3Thumb.gif" alt="WorldInfo properties"></a>
+			<p>3. To test the map, run UT3 with the -UseUnpublished commandline option. This causes UT3 to use the contents of the Unpublished directory rather than the Published directory.</p>
+				<p>-:-</p>
+		</div>
+
+		<div class="topicbanner" id="a000017">
+			<h2>Publishing a Map</h2>
+				<span class="date">Immortius :: May 07, 2008</span>
+		</div>
+
+		<div class="post">
+			<p>DGUnreal has written a great post on the steps involved in <a href=http://forums.epicgames.com/showpost.php?p=25152296&postcount=1">polishing and publishing an UT3 map</a>, and most of it is relevant for Nightblade Maps as well.</p>
+			<p>It is worth noting that the cooking process bakes the Nightblade gametype into the map, meaning that the map will need to be re-cooked and released every time a new version of Nightblade is released. Alternatively you can just skip the cooking step and release the map in its uncooked state, which gets around this. The map will be much larger if you do that though.</p>
+				<p>-:-</p>
+		</div>
+
+		<div class="legal">
+			<p>Copyright 2008 &copy; <a href="http://www.blackcatgames.com" title="Visit the Black Cat Games website">BlackCatGames.com</a></p>
+		</div>
+	</div>
+
+	<div class="menubuttons">
+		<div id="nav">
+			<a id="navnews" href="news.html" title="Latest news."><span class="wasp">News</span></a>
+			<a id="navabout" href="about.html" title="About the project."><span class="wasp">About</span></a>
+			<a id="navfiles" href="testing.html" title="Help test Nightblade."><span class="wasp">Files</span></a>
+			<a id="navforums" href="https://forums.blackcatgames.com/" title="Get in touch with the community."><span class="wasp">Forums</span></a>
+			<a id="navcontact" href="https://forums.blackcatgames.com/contact-us" title="Make contact with the crew."><span class="wasp">Contact</span></a>
+			<a id="markmapping" href="mapping.html" title="Learn to make maps in NightBlade."><span class="wasp">Mapping</span></a>
+		</div>
+		<div id="navwide">
+		  <a id="navjobs" href="help.html" title="Want to contribute to Nightblade?"><span class="wasp">Help Wanted</span></a>
+		</div>
+	</div>
+
+		<p><!-- Start image preloading -->
+			<img class="preload" src="styles/nightblade/buttons/news_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/about_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/files_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/forums_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/jobs_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/contact_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/mapping_hover.jpg" alt="" />
+		<!-- Stop image preloading --></p>
+
+ </body>
+</html>

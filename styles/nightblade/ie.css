@@ -1,0 +1,37 @@
+body {
+    background: url("bodybackground.jpg") no-repeat; 
+    background-color: #160D0E;
+    width: auto;
+    height: auto;
+    color: white;
+}
+
+.scr-center{margin-left: 13%;}
+
+.topicbanner {
+	background: url("topic.jpg") no-repeat;
+	width: 532px; height: 31px; 
+}
+
+.content {
+	width: 532px; height: auto;
+	margin-top: 164px;
+	margin-left: 220px;
+}
+
+.legal {
+	margin-bottom: -8px;
+}
+
+p.gallery {
+    margin: 2px 106px;
+}
+
+p.journallink {
+    position: absolute;
+    margin: 124px 96px;
+}
+
+.recent {
+    margin: 182px 10px;
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+    <title>NightBlade :: Mappers Guide to Doors</title>
+		<meta name="description" content="The official site for Nightblade, stealth-based medieval combat mod for UT3." />
+		<meta name="keywords" content="ut3, mods, ut3 mods, thievery, blackcatgames, nightblade, night-blade, phat lewt, medieval, thief, melee weapons, sword fights" />
+		
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="styles/nightblade/index.rdf" />
+		<link rel="EditURI" type="application/rsd+xml" title="RSD" href="styles/nightblade/rsd.xml" />
+		<style type="text/css">@import "styles/nightblade/nb.css";</style>
+		<!--[if IE]><style type="text/css">@import "styles/nightblade/ie.css";</style><![endif]-->
+	<script type="text/javascript">
+		<!--
+		var winNew;
+                  function openNew() {
+                  winNew = window.open('http://night-blade.com/credits.html', 'newWindow', 'height=300,width=300')
+		}
+		// -->
+	</script>
+  </head>
+
+  <body>
+			<div class="topmenu"></div>
+		<h1><span class="wasp">Mappers Guide to Doors</span></h1>
+
+	<div class="content">
+		
+		<div class="topicbanner" id="a000017">
+			<h2>Setting up a Simple Door</h2>
+				<span class="date">Immortius :: May 8, 2008</span>
+		</div>
+
+		<div class="post">
+			<p>First, some background. Doors in Nightblade are made up of two parts - a Door Control kismet object and the actual physical door(s) themselves. The door control keeps track of the door state and shares it between a number of actual doors, making double doors easy to set up.</p>
+			<p>1. All doors and other movers use static meshes in UT3. So the first step is to select a door static mesh in the generic browser. Nightblade's doors are in a package called NbDoor.</p>
+			<a href="images/NbMG/mappersguide4.gif"><img src="images/NbMG/mappersguide4Thumb.gif" alt="NbDoor Package"></a>
+			<p>2. With the door mesh selected, right-click in one of the viewports hover over the Add Actor... menu option. You will see mixed into the UT3 options a number of Nightblade options. The relevant options for doors are the "Add NbDoor" and "Add NbDoor (Preconfigured)" choices.</p>
+			<p>"Add NbDoor (Preconfigured)" creates a door set up with a DoorControl, which is generally what you will want to use. "Add NbDoor" creates a door without a door control, which can be used to add additional doors to connect to an existing DoorControl - if you want to set up double doors, for instance.</p>
+			<p>For some reason, if you add a "NbDoor (Preconfigured)" without first having opened UnrealKismet at least once since opening UT3 Editor, the DoorControl doesn't get created (I guess this is an UT3 Editor bug), so open and close the Kismet editor and then add a "NbDoor (Preconfigured)". If this has worked (and kismet boxes aren't set to be hidden) then your door should appear with a friendly green kismet box around it.</p>
+			<a href="images/NbMG/mappersguide5.gif"><img src="images/NbMG/mappersguide5Thumb.gif" alt="NbDoor Actor Placement Options"></a>
+			<p>3. Scale and position the door in the intended doorway, in the closed position. Please take note that the pivot point for Nightblade's doors is on one of the bottom corners (denoted by a red + in the viewports) - ensure that you place the door such that the pivot point is where you want the door to rotate around (where the door's hinge would be).</p>
+			<a href="images/NbMG/mappersguide6.gif"><img src="images/NbMG/mappersguide6Thumb.gif" alt="Door placement example"></a>
+			<p>4. Right-click the door and select Find NbDoor_X in UnrealKismet. This should open UnrealKismet with the sequence relating to the door shown (it also opens a search window you can safely close). On the left of the sequence is the DoorControl. This contains the majority of the door settings:</p>
+			<p><b>bBreakable</b> - can the door be damaged and eventually broken.
+ 			<br><b>InitialDoorHealth</b> - how much health the door has.
+			<br><b>bInitialLocked</b> - does the door start locked.
+			<br><b>bPickable</b> - can the door be picked.
+			<br><b>fPickTime</b> - how long it takes to pick the door's lock.
+			<br><b>KeyTag</b> - the tag of the key that can unlock this door.
+			<br><b>OwningTeam</b> - the team that owns this door, meaning they can open it even when locked.
+			<br><b>damageSound</b> - the sound the door makes when damaged.
+			<br><b>lockedSound</b> - the sound the door makes when locked.
+			<br><b>unlockedSound</b> - the sound the door makes when unlocked.</p>
+			<p>The properties for the NbDoor itself allow you to set the various opening and closing sounds for the door, under the InterpActor tab.</p>
+			<p>On the right is the Matinee sequence for the door. Double click this to open the matinee editor.</p>
+			<a href="images/NbMG/mappersguide7.gif"><img src="images/NbMG/mappersguide7Thumb.gif" alt="Door Kismet Setup"></a>
+			<p>5. Zoom out on the matinee sequence using the mouse wheel until you can see both red triangles. This denotes the length of the sequence. Doors should open and close reasonably quickly, so click the right-triangle and drag it back until the sequence is 0.75 seconds long (you may need to change your timeline granuality in the toolbar to 0.05s first).</p>
+			<p>Next set the current time to 0.000 by moving the black line to the left edge. Select the Movement Track under MoverGroup and press enter to set the initial keypoint. A little red triangle should appear.</p>
+			<p>Then move the current time to the right-edge of the time sequence. Without closing the Matinee window, select your door in the world and rotate it to the open position. Then return to the matinee window, select the Movement track again and press enter to add the final keypoint.</p>
+			<p>If you move the black bar back and forth in the matinee window you should see your door moving between the open and closed position in the world now.</p>
+			<a href="images/NbMG/mappersguide8.gif"><img src="images/NbMG/mappersguide8Thumb.gif" alt="Door Matinee Setup"></a>
+			<p>6. One final step is required to get the door functioning - by default, NbDoors have no collision (this is another UT3 editor thing). Luckily you can add collision to all doors at once, so if you need to place a lot of doors you can do this step once at the very end. Select your door. If necessary, right-click the door and select "Select all NbDoor". Then enter actor properties, open the Collision tab and for Collision Type select COLLIDE_BlockAll.</p>
+			<a href="images/NbMG/mappersguide9.gif"><img src="images/NbMG/mappersguide9Thumb.gif" alt="Door Collision Setup"></a>
+				<p>-:-</p>
+		</div>
+
+		<div class="topicbanner" id="a000017">
+			<h2>Door Lighting</h2>
+				<span class="date">Immortius :: May 8, 2008</span>
+		</div>
+
+		<div class="post">
+			<p>At this stage your door should be fully functional in Nightblade. However, you will find that ingame the door won't be lit up except by ambient light and flares.</p>
+			<p>In UT3, the lighting system has been extended to include a number of lighting channels and various other options, giving precise if fiddly control over exactly what each light affects. The important channels are:</p>
+			<p><b>BSP</b> - whether this light affects BSP geometry.
+ 			<br><b>Static</b> - whether this light affects static meshes (this is, the static meshes you place in the map, not the ones that are used for gameplay components like whistlers).
+			<br><b>CompositeDynamic</b> - this appears to be whether this light affects gameplay actors with light environments. Examples would be players and a lot of gameplay items like whistlers.
+			<br><b>Dynamic</b> - whether this light affects dynamic actors. The crucial example here are NbDoors and other movers.</p>
+			<p>Standard point lights and NbTorchLights are set to affect the BSP, Static and Composite Dynamic by default, so for a light to affect a door you will need to go in and switch on the Dynamic channel. You will probably also want to turn on CastDynamicShadows as well, which prevents the dynamic component of the light shining through walls and doors.</p>
+			<p>Be aware that having a lot of dynamic lights, especially overlapping, can drop performance. I recommend having only only one, maybe two lights on each side of a door set to affect the dynamic channel - the most significant one on either side.</p>
+			<a href="images/NbMG/mappersguide10.gif"><img src="images/NbMG/mappersguide10Thumb.gif" alt="Light Properties"></a>
+				<p>-:-</p>
+		</div>
+
+		<div class="topicbanner" id="a000017">
+			<h2>Double Doors</h2>
+				<span class="date">Immortius :: May 8, 2008</span>
+		</div>
+
+		<div class="post">
+			<p>Since your opulent mansion would be incomplete without a set of double doors, here's how to set a pair up.</p>
+			<p>1. First, set up a single door as described above.</p>
+			<p>2. Place your second door using the "Add NbDoor" option (not the preconfigured NbDoor).</p>
+			<p>3. Move, scale and rotate your door into closed position.</p>
+			<p>4. Open up the Kismet sequence for your first door, and then open the door's Matinee sequence.</p>
+			<p>5. Right-click under the original MoverGroup's movement track, and add a new empty group. Name it as you wish (you can also rename your original group). Right-click on the new group and add a movement track.</p>
+			<p>6. Close the Matinee window. You should see a new pink box on the bottom of the Matinee node in the Door sequence corresponding to the new matinee group. Select your second door in the viewport and then right-click in UnrealKismet. Choose "New Object var using NbDoor_x". This will add a node for the second door. Then click and drag a line from the new pink box to the second door's node. This links it to the second matinee track.</p>
+			<a href="images/NbMG/mappersguide11.gif"><img src="images/NbMG/mappersguide11Thumb.gif" alt="Double Door Kismet"></a>
+			<p>7. Open up the Matinee window and set up the key points for the second door, making sure to select the Movement track for your second MoverGroup before pressing enter.</p>
+			<a href="images/NbMG/mappersguide12.gif"><img src="images/NbMG/mappersguide12Thumb.gif" alt="Double Door Matinee"></a>
+			<p>8. Your double door is now complete. (Don't forget to set its collision).</p>
+			
+				<p>-:-</p>
+		</div>
+
+		<div class="topicbanner" id="a000017">
+			<h2>Door Handles</h2>
+				<span class="date">Immortius :: May 8, 2008</span>
+		</div>
+
+		<div class="post">
+			<p>Door handles add a little extra detail to your map.</p>
+			<p>1. Add the door handle mesh you wish to use to the map as an Interp Actor. Interp Actors are another option under the "Add Actors" menu, these are UT3's standard movers.</p>
+			<p>2. Rotate, scale and otherwise move it to where you want it to appear on the door.</p>
+			<p>3. Select the door you want to attack the handle to and make a note of its name (it will say on the status bar Persistent Level.NbDoor_X. The NbDoor_X bit is what you are interested in).</p>
+			<p>4. Select the door handle and open up the actor properties. Under the Attachment Tab, type in the door's name as the Base. Also select bHardAttach.</p>
+			<a href="images/NbMG/mappersguide13.gif"><img src="images/NbMG/mappersguide13Thumb.gif" alt="Door Handle Properties"></a>			
+			<p>Note that you don't need to type in the door's full name, just the last bit.</p>
+			<p>If you want to go further you can add extra matinee groups for the door handles and animate them a little when the door open and closes, although none of the door handles we currently have are set up for this.</p>
+			
+			
+				<p>-:-</p>
+		</div>
+	
+		<div class="legal">
+			<p>Copyright 2008 &copy; <a href="http://www.blackcatgames.com" title="Visit the Black Cat Games website">BlackCatGames.com</a></p>
+		</div>
+	</div>
+
+
+	<div class="menubuttons">
+		<div id="nav">
+			<a id="navnews" href="news.html" title="Latest news."><span class="wasp">News</span></a>
+			<a id="navabout" href="about.html" title="About the project."><span class="wasp">About</span></a>
+			<a id="navfiles" href="testing.html" title="Help test Nightblade."><span class="wasp">Files</span></a>
+			<a id="navforums" href="https://forums.blackcatgames.com/" title="Get in touch with the community."><span class="wasp">Forums</span></a>
+			<a id="navcontact" href="https://forums.blackcatgames.com/contact-us" title="Make contact with the crew."><span class="wasp">Contact</span></a>
+			<a id="markmapping" href="mapping.html" title="Learn to make maps in NightBlade."><span class="wasp">Mapping</span></a>
+		</div>
+		<div id="navwide">
+		  <a id="navjobs" href="help.html" title="Want to contribute to Nightblade?"><span class="wasp">Help Wanted</span></a>
+		</div>
+	</div>
+
+		<p><!-- Start image preloading -->
+			<img class="preload" src="styles/nightblade/buttons/news_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/about_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/files_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/forums_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/jobs_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/contact_hover.jpg" alt="" />
+			<img class="preload" src="styles/nightblade/buttons/mapping_hover.jpg" alt="" />
+		<!-- Stop image preloading --></p>
+
+ </body>
+</html>

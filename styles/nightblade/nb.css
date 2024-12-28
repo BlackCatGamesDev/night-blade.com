@@ -1,0 +1,236 @@
+body {
+	background: #000000 url("bodybackground.jpg") no-repeat; color: white;
+}
+
+    a:link {color: #5D5D8D; background-color: inherit;}
+    a:visited {color: #5D5D8D; background-color: inherit;}
+    a:hover {color: #BBBBBB; background-color: inherit;}
+    a:active {color: #5D5DFF; background-color: inherit; text-decoration: overline underline;}
+    a:focus {color: #5D5D8D; background-color: inherit;}
+    .wasp {display: none;}
+    ul {list-style-type: circle;}
+    img {border: none;}
+    .scr-center{margin-left: 28%;}
+
+
+    table {border-style: none; vertical-align: middle;}
+    tr.odd {background-color: #2F2F46; color: #9999BB; text-align: center; }
+    tr.even {background-color: transparent; text-align: center;}
+    th {font-weight:bold; background-color: #2F2F46; color: #EEEEEE; text-align: center;}
+    td {width: 125px;}
+
+ul.recent {
+    margin-top: 16%;
+    margin-left: 2.5%;
+}
+
+li.recent {
+    margin: -2px 0 -3px 0;
+    list-style-type:disc;
+}
+
+.archive {
+    margin: 12px 117px;
+    list-style-type:none;
+}
+
+.recent {
+    position: absolute;
+    margin: 181px 10px;
+    background-color: transparent;
+    color: #BBBBBB;
+    font: 64% Vera, Verdana, Arial, Helvetica, sans-serif;
+    position: absolute; left: 8px; top: 8px;
+}
+
+.diary {
+    background-color: transparent;
+    margin: 466px 12px;
+    width: 182px;
+    color: #BBBBBB;
+    font: 64% Vera, Verdana, Arial, Helvetica, sans-serif;
+    position: absolute; left: 8px; top: 8px;
+}
+
+p.journallink {
+    position: absolute;
+    margin: 125px 96px;
+    z-index: 99;
+}
+
+p.gallery {
+    margin: 0px 106px;
+}
+
+p.end {
+    text-align: center;
+}
+
+p.topinfo {
+    text-align: center;
+    font: 64% Vera, Verdana, Arial, Helvetica, sans-serif;
+}
+
+.screenshot {
+    margin: 180px 23px;
+    background-color: transparent;
+    color: #BBBBBB;
+    font: 64% Vera, Verdana, Arial, Helvetica, sans-serif;
+    position: absolute; left: 8px; top: 153px;
+}
+
+
+.content {
+    background-color: transparent;
+    color: #BBBBBB;
+    position: relative;
+    width: 622px; height: 100%; 
+    margin-top: 170px;
+    margin-left: 132px;
+    z-index: 4;
+}
+
+.topmenu {
+    background: url("topmenu.jpg") no-repeat;
+    width: 100%; height: 119px; 
+    position: absolute; 
+    top: 0px; 
+    left: 0px;
+}
+
+    #nav a {
+      display: block;
+      width: 87px; height: 22px;
+    }
+    
+    #navwide a {
+      display: block;
+      width: 118px; height: 22px;
+    }
+
+#nightblade-news h1 {background: url("buttons/news.jpg") no-repeat;}
+#nightblade-about h1 {background: url("buttons/about.jpg") no-repeat;}
+#nightblade-guides h1 {background: url("buttons/guides.jpg") no-repeat;}
+#nightblade-files h1 {background: url("buttons/files.jpg") no-repeat;}
+#nightblade-mapping h1 {background: url("buttons/mapping.jpg") no-repeat;}
+#nightblade-forums h1 {background: url("buttons/forums.jpg") no-repeat;}
+#nightblade-jobs h1 {background: url("buttons/jobs.jpg") no-repeat;}
+#nightblade-contact h1 {background: url("buttons/contact.jpg") no-repeat;}
+      
+      
+      #navnews:link {background: url("buttons/news.jpg");}
+      #navnews:visited {background: url("buttons/news.jpg");}
+      #navnews:hover {background: url("buttons/news_hover.jpg");}
+      #navnews:active {background: url("");}
+      #navnews {position: absolute; left: 170px; top: 90px;}
+      #marknews:link, #marknews:visited, #marknews:hover {position: absolute; left: 170px; top: 90px; background: url("buttons/news_hover.jpg");}
+
+      #navabout:link {background: url("buttons/about.jpg");}
+      #navabout:visited {background: url("buttons/about.jpg");}
+      #navabout:hover {background: url("buttons/about_hover.jpg");}
+      #navabout:active {background: url("");}
+      #navabout {position: absolute; left: 90px; top: 90px;}
+#markabout:link, #markabout:visited, #markabout:hover {position: absolute; left: 90px; top: 90px; background: url("buttons/about_hover.jpg");}
+
+      #navguides:link {background: url("buttons/guides.jpg");}
+      #navguides:visited {background: url("buttons/guides.jpg");}
+      #navguides:hover {background: url("buttons/guides_hover.jpg");}
+      #navguides:active {background: url("");}
+      #navguides {position: absolute; left: 201px; top: 90px;}
+#markguides:link, #markguides:visited, #markguides:hover {position: absolute; left: 201px; top: 90px; background: url("buttons/guides_hover.jpg");}
+
+      #navfiles:link {background: url("buttons/testing.jpg");}
+      #navfiles:visited {background: url("buttons/testing.jpg");}
+      #navfiles:hover {background: url("buttons/testing_hover.jpg");}
+      #navfiles:active {background: url("");}
+      #navfiles {position: absolute; left:255px; top: 90px;}
+#markfiles:link, #markfiles:visited, #markfiles:hover {position: absolute; left: 255px; top: 90px; background: url("buttons/testing_hover.jpg");}
+ 
+      #navforums:link {background: url("buttons/forums.jpg");}
+      #navforums:visited {background: url("buttons/forums.jpg");}
+      #navforums:hover {background: url("buttons/forums_hover.jpg");}
+      #navforums:active {background: url("");}
+      #navforums {position: absolute; left: 610px; top: 90px;}
+
+      #navjobs:link {background: url("buttons/jobs.jpg");}
+      #navjobs:visited {background: url("buttons/jobs.jpg");}
+      #navjobs:hover {background: url("buttons/jobs_hover.jpg");}
+      #navjobs:active {background: url("");}
+      #navjobs {position: absolute; left: 360px; top: 90px; }
+#markjobs:link, #markjobs:visited, #markjobs:hover {position: absolute; left: 360px; top: 90px; background: url("buttons/jobs_hover.jpg"); }
+
+      #navcontact:link {background: url("buttons/contact.jpg");}
+      #navcontact:visited {background: url("buttons/contact.jpg");}
+      #navcontact:hover {background: url("buttons/contact_hover.jpg");}
+      #navcontact:active {background: url("");}
+      #navcontact {position: absolute; left: 710px; top: 90px;}
+#markcontact:link, #markcontact:visited, #markcontact:hover {position: absolute; left: 710px; top: 90px; background: url("buttons/contact_hover.jpg");}
+   
+      #navmapping:link {background: url("buttons/mapping.jpg");}
+      #navmapping:visited {background: url("buttons/mapping.jpg");}
+      #navmapping:hover {background: url("buttons/mapping_hover.jpg");}
+      #navmapping:active {background: url("");}
+      #navmapping {position: absolute; left: 500px; top: 90px;}
+#markmapping:link, #markmapping:visited, #markmapping:hover {position: absolute; left: 500px; top: 90px; background: url("buttons/mapping_hover.jpg");}
+
+.topicbanner {
+    background: url("topic.jpg") no-repeat;
+    width: 610px; height: 25px;
+}
+
+h2 {
+    display: inline; float: left;
+    background-color: transparent;
+    font: 75% Vera, Verdana, Arial, Helvetica, sans-serif;
+    position: relative;
+    margin: 4px 10px;
+    font-weight:bold;
+    color: #EEEEEE;
+}
+
+.date {
+    display: inline; float: right;
+    background-color: transparent;
+    font: 64% Vera, Verdana, Arial, Helvetica, sans-serif;
+    position: relative;
+    margin: 5px 10px;
+    font-weight:bold;
+}
+
+.post {
+    background-color: transparent;
+    color: #BBBBBB;
+    margin: 20px 10px 40px 10px;
+    font: 64% Vera, Verdana, Arial, Helvetica, sans-serif;
+}
+
+.extended {
+    background-color: transparent;
+    color: #BBBBBB;
+    font: 64% Vera, Verdana, Arial, Helvetica, sans-serif;
+    margin-left: 10px;
+}
+
+.legal {
+    background-color: transparent;
+    color: #BBBBBB;
+    font: 64% Vera, Verdana, Arial, Helvetica, sans-serif;
+    text-align: center;
+    position: relative;
+    margin-bottom: -18px;
+}
+
+.thiefpiccol {
+    width: 242px;
+}
+
+.thiefnewscol {
+    width: 400px;
+}
+
+.center {text-align: center;}
+.screenshots {margin-left: 30px;}
+.thumbnails {margin-left: 30px; display: inline;}
+.preload {width:0;height:0;display:none;}
+
+
